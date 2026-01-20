@@ -6,17 +6,19 @@ export interface Game {
     description: string;
     type: GameType;
     color: string;
-    component?: React.ComponentType<any>; // Will be populated as we build them
+    scoreUnit?: string; // 'ms', 'clicks', 'pts', etc.
+    sortOrder?: 'asc' | 'desc'; // asc = lower is better (time), desc = higher is better (points)
+    component?: React.ComponentType<any>;
 }
 
 export const GAMES: Game[] = [
     // Competitive
-    { id: 'reaction-time', title: 'Reaction Time', description: 'Tap when green.', type: 'competitive', color: '#10b981' },
-    { id: 'click-speed', title: 'Click Speed', description: 'Tap fast. Don\'t stop.', type: 'competitive', color: '#3b82f6' },
-    { id: 'aim-trainer', title: 'Aim Trainer', description: 'Hit the targets.', type: 'competitive', color: '#f43f5e' },
-    { id: 'memory-flash', title: 'Memory Flash', description: 'Repeat the pattern.', type: 'competitive', color: '#8b5cf6' },
-    { id: 'fast-math', title: 'Fast Math', description: 'Solve. Quickly.', type: 'competitive', color: '#eab308' },
-    { id: 'color-match', title: 'Color Match', description: 'Matches? Yes or No.', type: 'competitive', color: '#ec4899' },
+    { id: 'reaction-time', title: 'Reaction Time', description: 'Tap when green.', type: 'competitive', color: '#10b981', scoreUnit: 'ms', sortOrder: 'asc' },
+    { id: 'click-speed', title: 'Click Speed', description: 'Tap fast. Don\'t stop.', type: 'competitive', color: '#3b82f6', scoreUnit: 'clicks', sortOrder: 'desc' },
+    { id: 'aim-trainer', title: 'Aim Trainer', description: 'Hit the targets.', type: 'competitive', color: '#f43f5e', scoreUnit: 'ms', sortOrder: 'asc' },
+    { id: 'memory-flash', title: 'Memory Flash', description: 'Repeat the pattern.', type: 'competitive', color: '#8b5cf6', scoreUnit: 'lvl', sortOrder: 'desc' },
+    { id: 'fast-math', title: 'Fast Math', description: 'Solve. Quickly.', type: 'competitive', color: '#eab308', scoreUnit: 'pts', sortOrder: 'desc' },
+    { id: 'color-match', title: 'Color Match', description: 'Matches? Yes or No.', type: 'competitive', color: '#ec4899', scoreUnit: 'pts', sortOrder: 'desc' },
 
     // Casual
     { id: 'random-challenge', title: 'Challenge', description: 'Do something new.', type: 'casual', color: '#f97316' },

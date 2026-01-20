@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { RefreshCcw, BrainCircuit } from "lucide-react";
 import { cn } from "@/lib/utils";
+import SubmitScore from "@/components/games/SubmitScore";
 
 const COLORS = [
     "bg-red-500",
@@ -129,6 +130,9 @@ export default function MemoryFlash() {
                     <p className="text-white/80">
                         {score > 10 ? "Genius memory! 🧠" : score > 5 ? "Not bad! 👍" : "Fish memory? 🐟"}
                     </p>
+
+                    <SubmitScore gameId="memory-flash" score={score} scoreUnit="lvl" />
+
                     <button
                         onClick={reset}
                         className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform mt-4"

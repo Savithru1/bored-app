@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { RefreshCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
+import SubmitScore from "@/components/games/SubmitScore";
 
 export default function ReactionTime() {
     const [state, setState] = useState<'idle' | 'waiting' | 'ready' | 'result'>('idle');
@@ -81,6 +82,9 @@ export default function ReactionTime() {
                     <p className="text-white/80">
                         {time < 200 ? "Godlike! ⚡" : time < 300 ? "Nice reflex! 🔥" : "You can do better. 🐢"}
                     </p>
+
+                    <SubmitScore gameId="reaction-time" score={time} scoreUnit="ms" />
+
                     <button
                         onClick={reset}
                         className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform mt-4"

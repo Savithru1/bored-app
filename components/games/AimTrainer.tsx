@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { RefreshCcw, Crosshair } from "lucide-react";
 import { cn } from "@/lib/utils";
+import SubmitScore from "@/components/games/SubmitScore";
 
 interface Target {
     id: number;
@@ -107,7 +108,7 @@ export default function AimTrainer() {
                     <motion.div
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
-                        className="text-center"
+                        className="text-center flex flex-col items-center"
                     >
                         <div className="text-5xl font-mono font-bold text-white mb-2">
                             {(finalTime / 1000).toFixed(2)}s
@@ -115,9 +116,12 @@ export default function AimTrainer() {
                         <div className="text-rose-400 text-lg mb-6">
                             Average: {(finalTime / TOTAL_TARGETS).toFixed(0)}ms / target
                         </div>
+
+                        <SubmitScore gameId="aim-trainer" score={finalTime} scoreUnit="ms" />
+
                         <button
                             onClick={reset}
-                            className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform mx-auto"
+                            className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform mx-auto mt-6"
                         >
                             <RefreshCcw size={18} /> Try Again
                         </button>

@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { RefreshCcw, Calculator } from "lucide-react";
+import SubmitScore from "@/components/games/SubmitScore";
 
 export default function FastMath() {
     const [state, setState] = useState<'idle' | 'playing' | 'result'>('idle');
@@ -144,6 +145,9 @@ export default function FastMath() {
                     <p className="text-white/80">
                         {score > 20 ? "Human calculator! 🧮" : score > 10 ? "Quick maths! ✨" : "School time? 📚"}
                     </p>
+
+                    <SubmitScore gameId="fast-math" score={score} scoreUnit="pts" />
+
                     <button
                         onClick={reset}
                         className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform mt-4"

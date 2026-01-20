@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { RefreshCcw, MousePointer2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import SubmitScore from "@/components/games/SubmitScore";
 
 export default function ClickSpeed() {
     const [state, setState] = useState<'idle' | 'running' | 'result'>('idle');
@@ -94,6 +95,9 @@ export default function ClickSpeed() {
                     <p className="text-white/80 max-w-xs mx-auto">
                         {clicks > 50 ? "Are you a robot? 🤖" : clicks > 35 ? "Speed demon! ⚡" : "Keep practicing! 💪"}
                     </p>
+
+                    <SubmitScore gameId="click-speed" score={clicks} scoreUnit="clicks" />
+
                     <button
                         onClick={reset}
                         className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform mt-4"

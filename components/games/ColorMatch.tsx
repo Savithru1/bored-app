@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { RefreshCcw, Palette } from "lucide-react";
-import { cn } from "@/lib/utils";
+import SubmitScore from "@/components/games/SubmitScore";
 
 const COLORS = [
     { name: "RED", hex: "#ef4444" },
@@ -141,6 +141,9 @@ export default function ColorMatch() {
                     <p className="text-white/80">
                         {score > 25 ? "Brain on fire! 🔥" : score > 15 ? "Solid focus! 🎯" : "Brain fog? ☁️"}
                     </p>
+
+                    <SubmitScore gameId="color-match" score={score} scoreUnit="pts" />
+
                     <button
                         onClick={reset}
                         className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform mt-4"
