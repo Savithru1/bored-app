@@ -26,7 +26,8 @@ export default function RootLayout({
     return (
         <html lang="en" className="dark">
             <body className={cn(inter.variable, "font-sans min-h-screen bg-background text-foreground antialiased selection:bg-purple-500/30")}>
-                <main className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden p-4">
+                <main className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
+                    <div className="fixed inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none mix-blend-overlay"></div>
                     <Leaderboard />
                     {children}
                 </main>
